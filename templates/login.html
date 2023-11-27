@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %} Login Page {% endblock %}
+{% block content %}
+<style>
+    /* Style to align labels to the left */
+    .form-group label {
+        text-align: left;
+    }
+
+    /* Style to make the navbar title white and remove the underline */
+    .navbar-brand {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/" style="color: white; text-decoration: none;">Real-Time Anomaly Detection System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    </div>
+    <div class="ml-auto">
+        <a href="{{ url_for('register') }}" class="btn btn-success ml-2">Register</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Welcome to the Login Page</h1>
+
+    <form method="POST" id="loginForm">
+        <div class="form-group">
+            <label for="uname">Username</label>
+            <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter username" />
+        </div>
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
+        </div>
+        <a class="btn btn-primary" href="{{ url_for('index') }}" id="loginLink">Login</a>
+    </form>
+</div>
+
+<script>
+    document
+        .getElementById("loginLink")
+        .addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the anchor tag from navigating
+
+            // Submit the form using JavaScript
+            document.getElementById("loginForm").submit();
+        });
+</script>
+{% endblock %}

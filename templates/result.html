@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %} Video Processing Result {% endblock
+%} {% block content %}
+<h1>Video Processing Result</h1>
+
+<video controls width="640">
+  <source
+    src="{{ url_for('static', filename='output_videos/' + video_file) }}"
+    type="video/mp4"
+  />
+</video>
+
+<p>Predicted Action: {{ predictions }}</p>
+<p>Predicted Confidence: {{ confidence }}</p>
+
+<!-- Display past predictions in a table -->
+<h2>Past Predictions</h2>
+<table border="1">
+  <tr>
+    <th>Video File</th>
+    <th>Predicted Action</th>
+    <th>Confidence</th>
+  </tr>
+  {% for prediction in user.predictions %}
+  <tr>
+    <td>{{ prediction.video_file }}</td>
+    <td>{{ prediction.predictions }}</td>
+    <td>{{ "%.2f" % (prediction.confidence * 100) }}%</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<!-- Add the Logout button with the same functionality -->
+<form action="{{ url_for('logout') }}">
+  <input type="submit" value="Logout" />
+</form>
+
+<!-- Add the Live Camera button with the same functionality -->
+<form action="{{ url_for('live_camera') }}">
+  <input type="submit" value="Live Camera" />
+</form>
+
+{% endblock %}

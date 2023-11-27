@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<style>
+    background-image: url('https://assets-global.website-files.com/629742fed6d9c263c75cc48e/62b4560c7a3e5beea57d35c1_How-Anomaly-Detection-is-Changing-Industrial-Operations.jpeg');
+
+    height: 400px;
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Real-Time Anomaly Detection System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    </div>
+    <div class="ml-auto">
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+        <a href="{{ url_for('register') }}" class="btn btn-success ml-2">Register</a>
+    </div>
+</nav>
+<h1>Welcome to the Home Page</h1>
+{% endblock %}
